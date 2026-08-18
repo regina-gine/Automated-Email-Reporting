@@ -1,0 +1,16 @@
+Project,Activity_ID,Activity,Discipline,Planned_Finish,Progress_Percent,Priority,Status
+Project Alpha,A-001,Kickoff Meeting,Project Management,2026-08-01,100,High,Completed
+Project Alpha,A-002,Project Schedule Development,Project Controls,2026-08-04,100,High,Completed
+Project Alpha,A-003,P&ID Review,Process,2026-08-06,100,Medium,Completed
+Project Alpha,A-004,Equipment Layout Review,Mechanical,2026-08-08,85,High,In Progress
+Project Alpha,A-005,Instrument List Verification,Instrumentation,2026-08-10,70,Medium,In Progress
+Project Alpha,A-006,Electrical Load List,Electrical,2026-08-11,100,Medium,Completed
+Project Alpha,A-007,3D Model Review,Mechanical,2026-08-12,75,High,In Progress
+Project Alpha,A-008,Client Drawing Review,Project Management,2026-08-13,40,High,In Progress
+Project Alpha,A-009,Vendor Data Review,Mechanical,2026-08-14,60,Medium,In Progress
+Project Alpha,A-010,Pipe Support Coordination,Mechanical,2026-08-15,55,High,In Progress
+Project Alpha,A-011,Control Narrative Update,Process,2026-08-16,65,Medium,In Progress
+Project Alpha,A-012,Drawing Package Issue,Document Control,2026-08-18,80,High,In Progress
+Project Alpha,A-013,Design Review Meeting,Project Management,2026-08-19,50,High,In Progress
+Project Alpha,A-014,Final Client Comments Closure,Project Management,2026-08-20,0,High,Not Started
+Project Alpha,A-015,Issued for Construction Package,Document Control,2026-08-21,0,High,Not Started

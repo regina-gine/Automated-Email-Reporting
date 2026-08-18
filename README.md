@@ -1,25 +1,34 @@
 # Automated Daily Status Reporting System
 
-A Python-based automation project that transforms project activity data into a structured status report and prepares a ready-to-review Microsoft Outlook email draft.
+A Python-based reporting automation project designed to analyze project activity data, identify items requiring attention, generate structured status reports, and prepare daily project reporting outputs.
 
-The project demonstrates how repetitive project reporting tasks can be automated while keeping the final review and email sending under user control.
+The complete production implementation is maintained privately. This public repository contains a simplified runnable demonstration of the core status-analysis logic together with screenshots of the completed system.
+
+> The full Excel report-generation workflow, Outlook automation, production source code, and implementation details are intentionally not included in this public repository.
 
 ---
 
 ## Project Overview
 
-Preparing a daily project status report can involve several repetitive tasks:
+Daily project reporting often requires repetitive manual work:
 
-- Reviewing the activity tracker
-- Checking planned finish dates
-- Identifying delayed activities
-- Finding upcoming deadlines
-- Reviewing high-priority open items
-- Preparing a management summary
-- Drafting the status email
-- Attaching the latest report
+- reviewing activity trackers;
+- identifying delayed activities;
+- checking upcoming deadlines;
+- identifying critical open items;
+- preparing summary metrics;
+- creating Excel reports; and
+- preparing status emails.
 
-This project combines those steps into one Python workflow.
+This project was developed to automate that workflow using Python.
+
+The complete system processes project tracker data, generates status metrics and detailed activity lists, creates a formatted Excel report, and prepares an Outlook email draft with the generated report attached.
+
+---
+
+## Completed System
+
+The full working version performs the following workflow:
 
 ```text
 Project Tracker
@@ -28,199 +37,209 @@ Python Data Processing
       ↓
 Status Analysis
       ↓
-Excel Management Report
+Delayed / Due Soon / Critical Detection
       ↓
-Email Summary
+Daily Status Summary
       ↓
-Outlook Draft + Attachment
+Formatted Excel Report
       ↓
-User Review and Send
+Outlook Email Draft
+      ↓
+Manual Review & Send
 ```
 
 ---
 
-## Input: Project Activity Tracker
+## Status Analysis
 
-The automation reads an Excel-based project tracker containing activity information such as planned dates, actual dates, status, progress, priority, ownership, and remarks.
+The system automatically evaluates project activities and generates key reporting metrics including:
+
+- total activities;
+- completed activities;
+- activities in progress;
+- delayed activities;
+- activities due within three days; and
+- critical open items.
+
+This reduces the need to manually review individual tracker rows when preparing daily project reports.
+
+---
+
+## Project Tracker
 
 ![Project Tracker](screenshots/project-tracker.png)
 
-The portfolio version uses synthetic project data and does not contain confidential company, client, or operational information.
+The tracker contains activity-level project information used by the reporting workflow.
+
+The complete project uses Excel-based source data, while the public demonstration uses a small synthetic CSV dataset.
 
 ---
 
-## Automated Status Analysis
+## Generated Status Report
 
-Python evaluates the tracker using the selected report date and identifies:
+![Daily Status Report](screenshots/summary-dashboard.png)
 
-| Indicator | Description |
-|---|---|
-| Total Activities | All activities included in the tracker |
-| Completed | Activities marked as completed |
-| In Progress | Activities currently being worked on |
-| Delayed | Open activities beyond their planned finish date |
-| Due Within 3 Days | Open activities approaching their planned finish date |
-| Critical Open Items | High-priority activities that remain open |
+The complete system automatically generates a formatted Excel status report containing summary metrics and detailed activity information.
 
-The project includes a Demo Mode with a fixed report date so the portfolio dataset produces consistent results when the program is run in the future.
+The report is designed to provide a concise view of project status while highlighting items requiring attention.
 
-For actual use, Demo Mode can be disabled so the analysis uses the current date.
-
----
-
-## Generated Excel Report
-
-The program automatically creates a formatted Excel report containing a management-level summary and detailed activity lists.
-
-![Automated Status Dashboard](screenshots/summary-dashboard.png)
-
-The generated workbook contains four worksheets:
-
-- Summary
-- Delayed
-- Due Soon
-- Critical
-
-The Summary sheet provides a quick view of the overall project status, while the supporting worksheets contain the activities behind each indicator.
+The Excel report-generation implementation is maintained privately.
 
 ---
 
 ## Outlook Email Automation
 
-After generating the report, the program prepares a Microsoft Outlook email draft.
-
 ![Outlook Draft](screenshots/outlook-draft.png)
 
-The draft automatically includes:
+After generating the report, the complete system prepares an Outlook email draft containing the daily project status summary and attaches the generated Excel report.
 
-- Report date
-- Current activity status summary
-- Delayed activity count
-- Due-soon activity count
-- Critical open item count
-- Up to five delayed activities requiring attention
-- Generated Excel report as an attachment
+The email remains in draft form for review before sending.
 
-The email is intentionally opened as a draft instead of being sent automatically, allowing the user to review the report before sending it.
+This provides automation while maintaining a manual approval step before external communication.
+
+The Outlook automation implementation is not included in the public repository.
 
 ---
 
-## Key Features
+## Runnable Public Demo
 
-- Excel project tracker import
-- Automated date-based activity analysis
-- Delayed activity detection
-- Upcoming deadline monitoring
-- High-priority open item identification
-- Automated Excel report generation
-- Management-style KPI summary
-- Separate exception reports
-- HTML email generation
-- Automatic Outlook draft creation
-- Automatic report attachment
-- Demo and live reporting modes
-- Manual review before email sending
+A simplified demonstration is included so the core project-status analysis can be independently tested.
 
----
+The demo uses synthetic project data and demonstrates:
 
-## Technologies Used
+- CSV data loading;
+- date-based activity analysis;
+- completed and in-progress counts;
+- delayed activity detection;
+- activities due within three days;
+- critical open-item detection; and
+- identification of activities requiring attention.
 
-- Python
-- Pandas
-- OpenPyXL
-- PyWin32
-- Microsoft Excel
-- Microsoft Outlook
+The demo intentionally excludes the complete Excel reporting and Outlook automation implementation.
 
----
+### Requirements
 
-## Project Structure
+- Python 3
+- pandas
 
-```text
-Automated-Email-Reporting/
-│
-├── data/
-│   └── project_tracker.xlsx
-│
-├── output/
-│   └── daily_status_report.xlsx
-│
-├── screenshots/
-│   ├── project-tracker.png
-│   ├── summary-dashboard.png
-│   └── outlook-draft.png
-│
-├── src/
-│   ├── analyze_tracker.py
-│   ├── generate_report.py
-│   └── create_email.py
-│
-├── main.py
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
----
-
-## Running the Project
-
-Create and activate a Python virtual environment, then install the required packages:
+Install the required package:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the automation:
+Run the demonstration:
 
 ```bash
-python main.py
+python demo/demo_analysis.py
 ```
 
-The program will:
+Example output:
 
-1. Load the project tracker
-2. Analyze activity status
-3. Generate the Excel status report
-4. Prepare the email summary
-5. Attach the generated report
-6. Open the Outlook draft for review
+```text
+DAILY PROJECT STATUS - DEMO
+==================================
+Report Date: 18-Aug-2026
+
+Total Activities       15
+Completed              4
+In Progress            9
+Delayed                7
+Due Within 3 Days      4
+Critical Open Items    8
+
+ITEMS REQUIRING ATTENTION
+==================================
+A-004 | Equipment Layout Review | 08-Aug-2026 | High
+A-007 | 3D Model Review | 12-Aug-2026 | High
+A-008 | Client Drawing Review | 13-Aug-2026 | High
+A-010 | Pipe Support Coordination | 15-Aug-2026 | High
+A-005 | Instrument List Verification | 10-Aug-2026 | Medium
+```
 
 ---
 
-## Demo Mode
+## Public Demo Structure
 
-The portfolio version uses:
-
-```python
-DEMO_MODE = True
-DEMO_REPORT_DATE = "2026-08-18"
+```text
+demo/
+├── demo_analysis.py
+└── sample_data/
+    └── project_tracker_demo.csv
 ```
 
-This keeps the demonstration results consistent regardless of when the repository is reviewed.
-
-For live reporting:
-
-```python
-DEMO_MODE = False
-```
-
-The program will then use the current date.
+The demonstration dataset is synthetic and contains no confidential project or company information.
 
 ---
 
-## Possible Future Improvements
+## Technologies
 
-Potential enhancements include:
+The complete project uses:
 
-- Project-specific filtering
-- Configurable due-date thresholds
-- Recipient configuration
-- Historical reporting
-- Trend charts
-- Automated run logs
-- Multiple-project summaries
-- User interface for non-technical users
+- Python
+- pandas
+- Microsoft Excel
+- openpyxl
+- Outlook automation
+- pywin32
+- HTML email formatting
+- automated report generation
+
+The public demonstration requires only Python and pandas.
+
+---
+
+## Key Features
+
+### Complete Private Implementation
+
+- Excel project tracker processing
+- Automated project-status analysis
+- Delayed activity identification
+- Due-soon activity identification
+- Critical open-item detection
+- Daily KPI calculation
+- Automated formatted Excel report generation
+- Detailed activity reporting
+- HTML email summary generation
+- Outlook draft creation
+- Automatic report attachment
+- Manual review before email sending
+
+### Public Demonstration
+
+- Synthetic sample dataset
+- Runnable Python analysis
+- Project-status calculations
+- Delayed activity detection
+- Due-soon detection
+- Critical-item detection
+- Attention-item reporting
+
+---
+
+## Repository Approach
+
+This repository is designed as a portfolio case study with a limited runnable demonstration.
+
+The public demo provides enough functionality to review and test the core analytical approach without distributing the complete reusable automation system.
+
+The following components are intentionally maintained privately:
+
+- production Python source code;
+- complete Excel report-generation logic;
+- Outlook automation code;
+- production datasets;
+- full workflow implementation; and
+- detailed automation logic.
+
+---
+
+## Data Privacy
+
+All publicly available sample data and screenshots are intended for portfolio demonstration.
+
+No confidential company, client, project, or operational data is included in the runnable demonstration.
 
 ---
 
@@ -229,3 +248,9 @@ Potential enhancements include:
 Regina Grace
 
 Mechanical Engineering • Project Controls • Data & Automation
+
+---
+
+© 2026 Regina Grace. All rights reserved.
+
+This project is provided for portfolio demonstration and professional evaluation purposes. Reuse, redistribution, or commercial use of the complete project materials is not permitted without permission.
