@@ -1,0 +1,40 @@
+# ========================================
+# PRIVATE PROJECT IMPLEMENTATION
+# ========================================
+
+# Python source code
+main.py
+src/
+
+# Project data
+data/
+
+# Dependencies / implementation details
+requirements.txt
+
+# Generated reports
+output/
+
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment / secrets
+.env
+.env.*
+
+# Windows
+desktop.ini
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

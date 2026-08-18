@@ -1,0 +1,14 @@
+Automated Daily Status Reporting System
+
+Portfolio project by Regina Grace.
+
+This repository is provided for portfolio demonstration and
+professional evaluation purposes.
+
+The complete working Python implementation, source code, data files,
+and automation logic are not included in this public repository.
+
+Screenshots and documentation may not be reproduced, redistributed,
+or used commercially without permission.
+
+© 2026 Regina Grace. All rights reserved.
